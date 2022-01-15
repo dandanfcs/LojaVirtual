@@ -17,12 +17,21 @@ namespace LojaDeMateriais.Repositories
 
         public void IncluirProduto(Produto produto)
         {
+            Validar(produto);
             context.Add(produto);
             context.SaveChanges();
         }
         public List<Produto> ListarProdutos()
         {
            return dbSet.ToList();
+        }
+
+        private void Validar(Produto produto)
+        {
+            if( string.IsNullOrEmpty(produto.Nome) || string.IsNullOrEmpty(produto.Categoria) || produto.Preco.Equals(null))
+            {
+              throw new ArgumentNullException("Preencha os dados de forma correta antes de cadastrar");
+            }
         }
     }
 }

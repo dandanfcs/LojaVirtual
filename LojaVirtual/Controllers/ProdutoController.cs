@@ -17,7 +17,7 @@ namespace LojaDeMateriais.Controllers
             this.materialRepository = materialRepository;
         }
 
-        public IActionResult Index()
+        public IActionResult Criar()
         {            
             return View();
         }
