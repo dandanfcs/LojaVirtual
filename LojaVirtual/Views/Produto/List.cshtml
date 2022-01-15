@@ -28,7 +28,11 @@
                             </div>
                             
                             <div> 
-                            <button class="btn btn-dark lg w-50" >Comprar</button> 
+                            <a class="btn btn-dark lg w-50" 
+                                    asp-controller="Produto"
+                                    asp-action="Detalhes" 
+                                    asp-route-id="@produto.Id"
+                                    >Comprar</a> 
                             </div>
                         </div>
                     }

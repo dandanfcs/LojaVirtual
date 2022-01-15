@@ -23,15 +23,22 @@ namespace LojaDeMateriais.Repositories
         }
         public List<Produto> ListarProdutos()
         {
-           return dbSet.ToList();
+            return dbSet.ToList();
         }
 
         private void Validar(Produto produto)
         {
-            if( string.IsNullOrEmpty(produto.Nome) || string.IsNullOrEmpty(produto.Categoria) || produto.Preco.Equals(null))
+            if (string.IsNullOrEmpty(produto.Nome) || string.IsNullOrEmpty(produto.Categoria) || produto.Preco.Equals(null))
             {
-              throw new ArgumentNullException("Preencha os dados de forma correta antes de cadastrar");
+                throw new ArgumentNullException("Preencha os dados de forma correta antes de cadastrar");
             }
+        }
+
+        public Produto ObterProduto(int id)
+        {
+            //dbSet.FindAsync(id).Result;
+            Produto produto = dbSet.FindAsync(id).Result;
+            return produto;
         }
     }
 }

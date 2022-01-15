@@ -10,11 +10,11 @@ namespace LojaDeMateriais.Controllers
 {
     public class ProdutoController : Controller
     {
-        private readonly IProdutoRepository materialRepository;
+        private readonly IProdutoRepository produtoRepository;
 
         public ProdutoController(IProdutoRepository materialRepository)
         {
-            this.materialRepository = materialRepository;
+            this.produtoRepository = materialRepository;
         }
 
         public IActionResult Criar()
@@ -23,12 +23,18 @@ namespace LojaDeMateriais.Controllers
         }
         public IActionResult List()
         {
-            return View(materialRepository.ListarProdutos());
+            return View(produtoRepository.ListarProdutos());
         }
         public IActionResult Create(Produto produto)
         {
-            materialRepository.IncluirProduto(produto);
+            produtoRepository.IncluirProduto(produto);
             return RedirectToAction(nameof(List));
+        }
+
+        public IActionResult Detalhes(int id)
+        {
+           var produto = produtoRepository.ObterProduto(id);
+           return View(produto);
         }
     }
 }
