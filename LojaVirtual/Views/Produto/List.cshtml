@@ -1,0 +1,45 @@
+﻿@using LojaDeMateriais.Models
+@model List<Produto>;
+
+@{
+    ViewData["Title"] = "Produtos";
+}
+
+
+<h4>Produtos</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Especificação</th>
+                    <th scope="col">Fornecedor</th>
+                    <th scope="col">Adicionar</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var produto in Model){
+                <tr>
+                    <th scope="row">@produto.Nome</th>
+                    <td>@produto.Preco</td>
+                    <td>@produto.Marca</td>
+                    <td> <button class="btn btn-primary">Add</button> </td>
+                </tr>
+                }
+                
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
