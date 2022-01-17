@@ -5,14 +5,20 @@
     var produto = Model;
 }
 
-<h1>View</h1>
-
-<h4>Produto </h4>
 <hr />
 <div class="row">
+    <div class="col-md-8">
+       
+        <img src="https://i.imgur.com/RHepbj7.png" width="80%" />
+       
+    </div>
+
     <div class="col-md-4">
-       <h1>@produto.Nome</h1>
-       <h2>@produto.Preco</h2>
+        <h1>@produto.Nome</h1>
+        <h2>R$@produto.Preco,00</h2>
+        
+
+        <a class="btn btn-dark lg w-50" style="color:white;">Comprar</a>
     </div>
 </div>
 

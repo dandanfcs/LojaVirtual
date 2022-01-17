@@ -8,5 +8,6 @@ namespace LojaDeMateriais.Models
    public interface IColaboradorRepository
     {
        void AdicionarColaborador(Colaborador colab);
+       bool Logar(string email, string senha);
     }
 }

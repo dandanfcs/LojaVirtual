@@ -11,10 +11,24 @@ namespace LojaDeMateriais.Controllers
     public class ColaboradorController : Controller
     {
         private readonly IColaboradorRepository colaboradorRepository;
-
         public ColaboradorController(IColaboradorRepository colaboradorRepository)
         {
             this.colaboradorRepository = colaboradorRepository;
+        }
+        public IActionResult Login(string email, string senha)
+        {
+            var result = colaboradorRepository.Logar(email, senha);
+
+            if (result)
+            {
+                return RedirectToAction("List", "Produto");
+            }
+            return View();
+        }
+
+        public IActionResult Cadastro()
+        {
+            return View();
         }
 
         public IActionResult Index()

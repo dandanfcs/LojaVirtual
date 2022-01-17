@@ -36,7 +36,6 @@ namespace LojaDeMateriais.Repositories
 
         public Produto ObterProduto(int id)
         {
-            //dbSet.FindAsync(id).Result;
             Produto produto = dbSet.FindAsync(id).Result;
             return produto;
         }
