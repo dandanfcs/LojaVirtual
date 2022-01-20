@@ -9,5 +9,6 @@ namespace LojaVirtual.Repositories.Interfaces
    public interface IVendasRepository
     {
         void InserirProduto(Vendas vendas);
+        List<Vendas> BuscarVendasRealizadasPorId(int id);
     }
 }

@@ -16,6 +16,12 @@ namespace LojaVirtual.Repositories
 
         }
 
+        public List<Vendas> BuscarVendasRealizadasPorId(int id)
+        {
+            var lista = dbSet.Where(v => v.IdPedido == id).ToList();
+            return lista;
+        }
+
         public void InserirProduto(Vendas vendas)
         {
             context.Add(vendas);

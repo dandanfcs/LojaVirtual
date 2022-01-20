@@ -52,6 +52,21 @@ namespace LojaVirtual.Controllers
 
         public IActionResult FinalizarVenda()
         {
+            Pedido pedidoAberto = pedidoRepository.BuscarPedidoAberto();//vai buscar o primeiro pedido aberto da lista
+                                                                        //
+           var vendaRealizada = vendasRepository.BuscarVendasRealizadasPorId(pedidoAberto.Id);
+            //Retorna as vendas com o id do pedido aberto
+            List<Produto> produtoList = new List<Produto>();
+
+            foreach(var list in vendaRealizada)
+            {
+                Produto produto = produtoRepository.ObterProduto(list.IdProduto);
+                produtoList.Add(produto);
+
+            }
+
+            var valorDaCompra = produtoList.Sum(p => p.Preco);
+
             return View();
         }
     }

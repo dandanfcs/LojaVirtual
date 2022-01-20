@@ -10,6 +10,7 @@ namespace LojaDeMateriais.Repositories.Interfaces
     {
         void IncluirProduto(Produto material);
         List<Produto> ListarProdutos();
+
         Produto ObterProduto(int id);
     }
 }

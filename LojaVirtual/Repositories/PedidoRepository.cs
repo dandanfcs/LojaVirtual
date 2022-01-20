@@ -19,7 +19,7 @@ namespace LojaVirtual.Repositories
         public Pedido BuscarPedidoAberto()
         {
           var pedido = dbSet.ToList().Where(p => p.PedidoFechado == false).First();
-            return pedido;
+          return pedido;
         }
 
         public void InicializarPedido(Pedido pedido)
