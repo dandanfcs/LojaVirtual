@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LojaVirtual.Models
 {
-    public class Venda : BaseModel
+    public class Pedido : BaseModel
     {
-        public bool VendaFechada { get; set; }
+        public bool PedidoFechado { get; set; }
    
     }
 }

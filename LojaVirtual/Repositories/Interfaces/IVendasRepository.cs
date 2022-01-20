@@ -8,6 +8,6 @@ namespace LojaVirtual.Repositories.Interfaces
 {
    public interface IVendasRepository
     {
-        void InserirVenda(Vendas vendas);
+        void InserirProduto(Vendas vendas);
     }
 }

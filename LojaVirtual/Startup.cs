@@ -40,7 +40,7 @@ namespace LojaVirtual
 
             services.AddTransient<IColaboradorRepository, ColaboradorRepository>();
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
-            services.AddTransient<IVendaRepository, VendaRepository>();
+            services.AddTransient<IPedidoRepository, PedidoRepository>();
             services.AddTransient<IVendasRepository, VendasRepository>();
         }
 

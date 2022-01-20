@@ -16,7 +16,7 @@ namespace LojaVirtual.Repositories
 
         }
 
-        public void InserirVenda(Vendas vendas)
+        public void InserirProduto(Vendas vendas)
         {
             context.Add(vendas);
             context.SaveChanges();

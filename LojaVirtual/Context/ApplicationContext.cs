@@ -23,7 +23,8 @@ namespace LojaDeMateriais.Context
 
             modelBuilder.Entity<Produto>().HasKey(m => m.Id);
 
-            modelBuilder.Entity<Venda>().HasKey(m => m.Id);
+            modelBuilder.Entity<Pedido>().HasKey(m => m.Id);
+
             modelBuilder.Entity<Vendas>().HasKey(v => v.Id);
         }
     }

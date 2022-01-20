@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LojaVirtual.Repositories.Interfaces
 {
-    public interface IVendaRepository
+    public interface IPedidoRepository
     {
-        void InicializarPedido(Venda venda);
-        Venda BuscarVendaAberta();
+        void InicializarPedido(Pedido pedido);
+        Pedido BuscarPedidoAberto();
     }
 }

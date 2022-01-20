@@ -13,13 +13,14 @@ namespace LojaVirtual.Controllers
     public class VendaController : Controller
     {
         private readonly IProdutoRepository produtoRepository;
-        private readonly IVendaRepository vendaRepository;
+        private readonly IPedidoRepository pedidoRepository;
         private readonly IVendasRepository vendasRepository;
 
-        public VendaController(IProdutoRepository produtoRepository, IVendaRepository vendaRepository, IVendasRepository vendasRepository)
+        public VendaController(IProdutoRepository produtoRepository, IPedidoRepository vendaRepository, 
+            IVendasRepository vendasRepository)
         {
             this.produtoRepository = produtoRepository;
-            this.vendaRepository = vendaRepository;
+            this.pedidoRepository = vendaRepository;
             this.vendasRepository = vendasRepository;
         }
 
@@ -31,20 +32,20 @@ namespace LojaVirtual.Controllers
         public IActionResult RealizarVenda(int id)
         {
             Produto produto =  produtoRepository.ObterProduto(id);
-            Venda vendaAbertas = vendaRepository.BuscarVendaAberta();
+            Pedido pedidoAberto = pedidoRepository.BuscarPedidoAberto();
            
-            if(vendaAbertas == null)
+            if(pedidoAberto == null)
             {
                 var teste = "aaa";
             }
             Vendas venda = new Vendas()
             {
-                idProduto = produto.Id,
-                idVenda = vendaAbertas.Id,
-                data = DateTime.Now
+                IdProduto = produto.Id,
+                IdPedido = pedidoAberto.Id,
+                Data = DateTime.Now
             };
 
-            vendasRepository.InserirVenda(venda);
+            vendasRepository.InserirProduto(venda);
 
            return RedirectToAction("List", "Produto");
         }
