@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LojaVirtual.Migrations
 {
-    public partial class login : Migration
+    public partial class inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,7 +19,6 @@ namespace LojaVirtual.Migrations
                     Email = table.Column<string>(nullable: true),
                     Telefone = table.Column<string>(nullable: true),
                     Cpf = table.Column<string>(nullable: true),
-                    Login = table.Column<string>(nullable: true),
                     Senha = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -33,16 +33,27 @@ namespace LojaVirtual.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(nullable: true),
-                    Quantidade = table.Column<int>(nullable: false),
                     Preco = table.Column<float>(nullable: false),
-                    Categoria = table.Column<string>(nullable: true),
-                    Tamanho = table.Column<string>(nullable: true),
-                    Marca = table.Column<string>(nullable: true),
-                    Cor = table.Column<string>(nullable: true)
+                    IdVenda = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Produto", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Venda",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Data = table.Column<DateTime>(nullable: false),
+                    ValorTotal = table.Column<float>(nullable: false),
+                    VendaFechada = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Venda", x => x.Id);
                 });
         }
 
@@ -53,6 +64,9 @@ namespace LojaVirtual.Migrations
 
             migrationBuilder.DropTable(
                 name: "Produto");
+
+            migrationBuilder.DropTable(
+                name: "Venda");
         }
     }
 }

@@ -2,6 +2,8 @@ using LojaDeMateriais.Context;
 using LojaDeMateriais.Models;
 using LojaDeMateriais.Repositories;
 using LojaDeMateriais.Repositories.Interfaces;
+using LojaVirtual.Repositories;
+using LojaVirtual.Repositories.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -38,7 +40,8 @@ namespace LojaVirtual
 
             services.AddTransient<IColaboradorRepository, ColaboradorRepository>();
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
-
+            services.AddTransient<IVendaRepository, VendaRepository>();
+            services.AddTransient<IVendasRepository, VendasRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,7 +68,7 @@ namespace LojaVirtual
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Colaborador}/{action=Index}/{id?}");
+                    pattern: "{controller=Produto}/{action=List}/{id?}");
             });
         }
     }

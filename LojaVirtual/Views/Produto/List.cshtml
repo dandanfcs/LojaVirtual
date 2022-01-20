@@ -13,30 +13,32 @@
 
         <div class="container">
             <div>
-                <div class="row align-items-center bg-white">
-                   
-                    @foreach (var produto in Model)
-                    {
-                        <div class="col-4 border-bottom border-right p-2 ">
-                            <div>
-                                <img src="https://i.imgur.com/A0A4T87.png" class="" />
-                            </div>
+                @foreach (var produto in Model)
+                {
+                    <div class="row align-items-lg-center border bg-white">
 
-                            <div class="mb-4">
-                                <div scope="row">@produto.Nome</div>
-                                <div>R$@produto.Preco,00</div>
-                            </div>
-                            
-                            <div> 
-                            <a class="btn btn-dark lg w-50" 
-                                    asp-controller="Produto"
-                                    asp-action="Detalhes" 
-                                    asp-route-id="@produto.Id"
-                                    >Comprar</a> 
+
+
+                        <div class="col-4">
+                            <img src="https://i.imgur.com/A0A4T87.png" class="" />
+                        </div>
+
+                        <div class="col-8 mb-4">
+                            <div scope="row">@produto.Nome</div>
+                            <div>R$@produto.Preco,00</div>
+                            <div>
+                                <a class="btn btn-dark lg w-50"
+                                   asp-controller="Venda"
+                                   asp-action="RealizarVenda"
+                                   asp-route-id="@produto.Id">Adicionar ao carrinho</a>
                             </div>
                         </div>
-                    }
-                </div>
+                    </div>
+                }
+            <a class="btn btn-dark lg w-50"
+               asp-controller="Venda"
+               asp-action="FinalizarVenda">Finalizar Venda</a>
+
             </div>
         </div>
        

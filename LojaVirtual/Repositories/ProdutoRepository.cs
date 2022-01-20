@@ -28,7 +28,7 @@ namespace LojaDeMateriais.Repositories
 
         private void Validar(Produto produto)
         {
-            if (string.IsNullOrEmpty(produto.Nome) || string.IsNullOrEmpty(produto.Categoria) || produto.Preco.Equals(null))
+            if (string.IsNullOrEmpty(produto.Nome) || produto.Preco.Equals(null))
             {
                 throw new ArgumentNullException("Preencha os dados de forma correta antes de cadastrar");
             }

@@ -1,4 +1,5 @@
 ﻿using LojaDeMateriais.Models;
+using LojaVirtual.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,9 @@ namespace LojaDeMateriais.Context
             modelBuilder.Entity<Colaborador>().HasKey(c => c.Id);
 
             modelBuilder.Entity<Produto>().HasKey(m => m.Id);
+
+            modelBuilder.Entity<Venda>().HasKey(m => m.Id);
+            modelBuilder.Entity<Vendas>().HasKey(v => v.Id);
         }
     }
 }
