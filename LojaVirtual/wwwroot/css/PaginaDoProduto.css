@@ -1,2 +1,12 @@
 ﻿body {
 }
+.navbar-light .navbar-brand{
+    color: white;
+}
+textLink, .navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
+
+.blockMain{
+    background: red;
+}

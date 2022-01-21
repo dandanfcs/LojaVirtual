@@ -9,9 +9,11 @@ namespace LojaVirtual.Dtos
 {
     public class Resumo
     {
-        public List<Produto> Produtos {get; set;}
+        public List<Produto> Produtos { get; set; }
 
-        public Vendas Vendas { get; set; }
+        public List<Vendas> Vendas { get; set; } 
+
+        public float ValorTotal { get; set; }
 
     }
 }

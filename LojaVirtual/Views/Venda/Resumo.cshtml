@@ -1,0 +1,58 @@
+﻿@using LojaVirtual.Dtos
+@using LojaDeMateriais.Models
+@model LojaVirtual.Dtos.Resumo
+@{
+    ViewData["Title"] = "Resumo do Pedido";
+    var resumo = ViewData["Resumo"] as Resumo;
+    var produtos = ViewData["Produtos"] as List<Produto>;
+    var a = "aa";
+}
+
+<div>
+    <h1>Itens Pedidos</h1>
+    <div class="row rounded bg-white p-3 w-100 shadow-lg">
+
+        <div class="row flex justify-content-between w-100 align-items-start">
+            <div class="col p-3">
+                @foreach (var prod in produtos)
+                {
+                    <div class="row border-bottom">
+                        <div class="col">
+                            <img src="https://i.imgur.com/A0A4T87.png" title="source: imgur.com" />
+                        </div>
+
+                        <div class="col">
+
+                            <div class="p-2 ">
+                                <span> @prod.Nome - R$@prod.Preco,00</span>
+                            </div>
+                            
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="col p-2">
+                <div class="shadow border rounded p-3">
+                    <div class="bg-dark text-white p-1 rounded">Resumo do Pedido:</div>
+                    <div class="mt-1 border-bottom">
+                        <div> <span><bold>Rua: </bold>Mangabeiras</span> </div>
+                        <div> <span><bold>Bairro: </bold>Centro</span> </div>
+                        <div> <span><bold>Número: </bold>376</span> </div>
+                        <div> <span><bold>Cidade: </bold>Diamantina-Mg</span> </div>
+                        <div> <span><bold>CEP: </bold>39100-000</span> </div>
+                    </div>
+
+                    <div class=" mt-2" ><span>Valor Total: R$@resumo.ValorTotal,00</span></div>
+                    
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+
+</div>

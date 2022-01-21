@@ -8,16 +8,14 @@
 
 <h4>Produtos</h4>
 <hr />
-<div class="row">
+<div class="row rounded bg-white p-3 shadow-lg" >
     <div class="col-md-12">
 
         <div class="container">
             <div>
                 @foreach (var produto in Model)
                 {
-                    <div class="row align-items-lg-center border bg-white">
-
-
+                    <div class="row align-items-lg-center border-bottom bg-white">
 
                         <div class="col-4">
                             <img src="https://i.imgur.com/A0A4T87.png" class="" />
@@ -25,9 +23,14 @@
 
                         <div class="col-8 mb-4">
                             <div scope="row">@produto.Nome</div>
+                            <div> 
+                                <p  >
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                </p> 
+                            </div>
                             <div>R$@produto.Preco,00</div>
                             <div>
-                                <a class="btn btn-dark lg w-50"
+                                <a class="btn btn-dark lg shadow mt-1"
                                    asp-controller="Venda"
                                    asp-action="RealizarVenda"
                                    asp-route-id="@produto.Id">Adicionar ao carrinho</a>
@@ -35,9 +38,7 @@
                         </div>
                     </div>
                 }
-            <a class="btn btn-dark lg w-50"
-               asp-controller="Venda"
-               asp-action="FinalizarVenda">Finalizar Venda</a>
+            
 
             </div>
         </div>
@@ -45,12 +46,28 @@
     </div>
 </div>
 
-<div>
-    <a 
-       asp-controller="Produto"
-       asp-action="Criar">
-    Cadastrar Produto</a>
+<div class="flex justify-content-end m-2 divFinalizar">
+    <a class="btn btn-dark lg "
+       asp-controller="Venda"
+       asp-action="Resumo">Finalizar Venda</a>
 </div>
+
+
+<style>
+    p{
+        padding-top: 10px;
+        font-family:Arial;
+        font-size: 14px;
+        font-weight:200;
+    }
+    .divFinalizar {
+        display: flex;
+        align-items: end;
+        justify-content: flex-end;
+        margin: 20px 0px;
+    }
+
+</style>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

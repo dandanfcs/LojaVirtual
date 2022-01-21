@@ -1,5 +1,6 @@
 ﻿using LojaDeMateriais.Models;
 using LojaDeMateriais.Repositories.Interfaces;
+using LojaVirtual.Dtos;
 using LojaVirtual.Models;
 using LojaVirtual.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -50,10 +51,10 @@ namespace LojaVirtual.Controllers
            return RedirectToAction("List", "Produto");
         }
 
-        public IActionResult FinalizarVenda()
+        public IActionResult Resumo()
         {
             Pedido pedidoAberto = pedidoRepository.BuscarPedidoAberto();//vai buscar o primeiro pedido aberto da lista
-                                                                        //
+                                                                        
            var vendaRealizada = vendasRepository.BuscarVendasRealizadasPorId(pedidoAberto.Id);
             //Retorna as vendas com o id do pedido aberto
             List<Produto> produtoList = new List<Produto>();
@@ -67,7 +68,26 @@ namespace LojaVirtual.Controllers
 
             var valorDaCompra = produtoList.Sum(p => p.Preco);
 
+            Resumo resumo = new Resumo()
+            {
+                Vendas = vendaRealizada,
+                Produtos = produtoList,
+                ValorTotal = valorDaCompra
+            };
+
+            ViewBag.Resumo = resumo;
+            ViewBag.Produtos = resumo.Produtos.ToList();
+
+            return View();
+            // return RedirectToAction("Resumo", "Venda", resumo);
+        }
+
+       /* public IActionResult Resumo()
+        {
+            ViewBag.Resumo = resumo;
+            ViewBag.Produtos = resumo.Produtos.ToList();
             return View();
         }
+       */
     }
 }
