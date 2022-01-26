@@ -2,6 +2,7 @@ using LojaDeMateriais.Context;
 using LojaDeMateriais.Models;
 using LojaDeMateriais.Repositories;
 using LojaDeMateriais.Repositories.Interfaces;
+using LojaVirtual.Executores;
 using LojaVirtual.Repositories;
 using LojaVirtual.Repositories.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -42,6 +43,8 @@ namespace LojaVirtual
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
             services.AddTransient<IPedidoRepository, PedidoRepository>();
             services.AddTransient<IVendasRepository, VendasRepository>();
+            services.AddTransient<IVendasExecutor, VendasExecutor>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

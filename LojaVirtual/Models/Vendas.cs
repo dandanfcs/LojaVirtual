@@ -11,5 +11,6 @@ namespace LojaVirtual.Models
         public DateTime Data { get; set; }
         public int IdPedido { get; set; }
         public int IdProduto { get; set; }
+        public int Quantidade { get; set; }
     }
 }

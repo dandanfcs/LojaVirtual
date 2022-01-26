@@ -5,7 +5,7 @@
     ViewData["Title"] = "Resumo do Pedido";
     var resumo = ViewData["Resumo"] as Resumo;
     var produtos = ViewData["Produtos"] as List<Produto>;
-    var a = "aa";
+ 
 }
 
 <div>
@@ -24,7 +24,10 @@
                         <div class="col">
 
                             <div class="p-2 ">
-                                <span> @prod.Nome - R$@prod.Preco,00</span>
+                                <span>@prod.Nome</span> <br/>
+                                <span class="texto">Preço: R$@prod.Preco </span><br />
+                                <span class="texto">Quantidade: @prod.Quantidade</span><br />
+                                <span class="texto">Total: @(prod.Quantidade * prod.Preco)</span>
                             </div>
                             
                         </div>
@@ -56,3 +59,9 @@
     </div>
 
 </div>
+
+<style>
+    .texto {
+        font-family: monospace;
+    }
+</style>

@@ -1,6 +1,7 @@
 ﻿using LojaDeMateriais.Models;
 using LojaDeMateriais.Repositories.Interfaces;
 using LojaVirtual.Dtos;
+using LojaVirtual.Executores;
 using LojaVirtual.Models;
 using LojaVirtual.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -16,13 +17,15 @@ namespace LojaVirtual.Controllers
         private readonly IProdutoRepository produtoRepository;
         private readonly IPedidoRepository pedidoRepository;
         private readonly IVendasRepository vendasRepository;
+        private readonly IVendasExecutor vendasExecutor;
 
-        public VendaController(IProdutoRepository produtoRepository, IPedidoRepository vendaRepository, 
-            IVendasRepository vendasRepository)
+        public VendaController(IProdutoRepository produtoRepository, IPedidoRepository vendaRepository,
+            IVendasRepository vendasRepository, IVendasExecutor VendasExecutor)
         {
             this.produtoRepository = produtoRepository;
             this.pedidoRepository = vendaRepository;
             this.vendasRepository = vendasRepository;
+            this.vendasExecutor = VendasExecutor;
         }
 
         public IActionResult Index()
@@ -32,62 +35,22 @@ namespace LojaVirtual.Controllers
 
         public IActionResult RealizarVenda(int id)
         {
-            Produto produto =  produtoRepository.ObterProduto(id);
-            Pedido pedidoAberto = pedidoRepository.BuscarPedidoAberto();
-           
-            if(pedidoAberto == null)
-            {
-                var teste = "aaa";
-            }
-            Vendas venda = new Vendas()
-            {
-                IdProduto = produto.Id,
-                IdPedido = pedidoAberto.Id,
-                Data = DateTime.Now
-            };
+            vendasExecutor.RealizarVenda(id);
 
-            vendasRepository.InserirProduto(venda);
-
-           return RedirectToAction("List", "Produto");
+            return RedirectToAction("List", "Produto");
         }
 
         public IActionResult Resumo()
         {
-            Pedido pedidoAberto = pedidoRepository.BuscarPedidoAberto();//vai buscar o primeiro pedido aberto da lista
-                                                                        
-           var vendaRealizada = vendasRepository.BuscarVendasRealizadasPorId(pedidoAberto.Id);
-            //Retorna as vendas com o id do pedido aberto
-            List<Produto> produtoList = new List<Produto>();
-
-            foreach(var list in vendaRealizada)
-            {
-                Produto produto = produtoRepository.ObterProduto(list.IdProduto);
-                produtoList.Add(produto);
-
-            }
-
-            var valorDaCompra = produtoList.Sum(p => p.Preco);
-
-            Resumo resumo = new Resumo()
-            {
-                Vendas = vendaRealizada,
-                Produtos = produtoList,
-                ValorTotal = valorDaCompra
-            };
+            var resumo = vendasExecutor.ResumoDoPedido();
 
             ViewBag.Resumo = resumo;
             ViewBag.Produtos = resumo.Produtos.ToList();
 
             return View();
-            // return RedirectToAction("Resumo", "Venda", resumo);
+
         }
 
-       /* public IActionResult Resumo()
-        {
-            ViewBag.Resumo = resumo;
-            ViewBag.Produtos = resumo.Produtos.ToList();
-            return View();
-        }
-       */
+
     }
 }

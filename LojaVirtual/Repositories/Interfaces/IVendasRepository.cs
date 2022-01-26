@@ -1,4 +1,5 @@
-﻿using LojaVirtual.Models;
+﻿using LojaDeMateriais.Models;
+using LojaVirtual.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace LojaVirtual.Repositories.Interfaces
     {
         void InserirProduto(Vendas vendas);
         List<Vendas> BuscarVendasRealizadasPorId(int id);
+        void VerificarSeProdutoExisteNoCarrinho(int id);
     }
 }

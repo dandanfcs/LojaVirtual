@@ -5,12 +5,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LojaVirtual.Dtos;
 
 namespace LojaDeMateriais.Controllers
 {
     public class ProdutoController : Controller
     {
         private readonly IProdutoRepository produtoRepository;
+        
 
         public ProdutoController(IProdutoRepository materialRepository)
         {
