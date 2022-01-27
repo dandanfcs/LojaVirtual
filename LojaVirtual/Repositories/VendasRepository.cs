@@ -23,11 +23,18 @@ namespace LojaVirtual.Repositories
             return lista;
         }
 
-        public void VerificarSeProdutoExisteNoCarrinho(int id)
+        public bool VerificarSeProdutoExisteNoCarrinho(int id)
         {
             var produto = dbSet.Where(p => p.IdProduto == id).FirstOrDefault();
+            if (produto == null)
+            {
+                return false;
+            }
+
             produto.Quantidade++;
             context.SaveChanges();
+
+            return true;
         }
 
         public void InserirProduto(Vendas vendas)

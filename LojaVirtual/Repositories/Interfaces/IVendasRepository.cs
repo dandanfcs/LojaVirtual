@@ -11,6 +11,6 @@ namespace LojaVirtual.Repositories.Interfaces
     {
         void InserirProduto(Vendas vendas);
         List<Vendas> BuscarVendasRealizadasPorId(int id);
-        void VerificarSeProdutoExisteNoCarrinho(int id);
+        bool VerificarSeProdutoExisteNoCarrinho(int id);
     }
 }

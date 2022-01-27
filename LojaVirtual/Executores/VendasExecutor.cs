@@ -33,16 +33,13 @@ namespace LojaVirtual.Executores
             {
                 //vai ir na venda e pesquisar se o produto já existe na venda
                 //Se existir, aumentar a quantidade
-               
-                vendasRepository.VerificarSeProdutoExisteNoCarrinho(produto.Id);
-                return;
 
-            }//Senão, insere um novo produto
-
-            if (pedidoAberto == null)
-            {
-                var teste = "aaa";
+                if (vendasRepository.VerificarSeProdutoExisteNoCarrinho(produto.Id))
+                {
+                    return;
+                }
             }
+            //Senão, insere um novo produto
             Vendas venda = new Vendas()
             {
                 IdProduto = produto.Id,
