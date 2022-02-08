@@ -33,10 +33,10 @@ namespace LojaVirtual.Controllers
             return View();
         }
 
-        public IActionResult RealizarVenda(int id)
+       [HttpPost]
+        public IActionResult RealizarVenda([FromBody] int id)
         {
             vendasExecutor.RealizarVenda(id);
-
             return RedirectToAction("List", "Produto");
         }
 
