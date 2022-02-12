@@ -16,38 +16,8 @@
 <partial name="_CarrinhoDeCompras" model="@resumo" />
 
 <vc:carrinho cat />
-<script type="text/javascript">
 
-    var btn = document.getElementById("#btnFechar");
-    var divCarrinho = document.querySelector(".cartList");
-
-    function fecharModal() {
-        divCarrinho.style.display = "none";
-    }
-
-    function abrirModal() {
-        divCarrinho.style.display = "block";
-    }
-
-
-    function adicionarNoCarrinho(btn) {
-  
-        var item = $(btn).attr('id');
-
-        $.ajax({
-            url: '/Pedido/RealizarVenda',
-            type: 'POST',
-            contentType: 'application/json',
-            data: item
-        }).done(function (response) {
-            console.log("produto incluido");
-            abrirModal();
-        });
-    }
-
-</script>
-
-
+<script src="~/js/carrinho.js"></script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -1,6 +1,6 @@
 ﻿using LojaDeMateriais.Models;
 using LojaDeMateriais.Repositories.Interfaces;
-
+using LojaVirtual.Areas.Catalogo.Models;
 using LojaVirtual.Executores;
 using LojaVirtual.Models;
 using LojaVirtual.Repositories.Interfaces;
@@ -34,10 +34,11 @@ namespace LojaVirtual.Controllers
         }
 
        [HttpPost]
-        public IActionResult RealizarVenda([FromBody] int id)
+        public CarrinhoViewModel RealizarVenda([FromBody] int id)
         {
             vendasExecutor.RealizarVenda(id);
-            return RedirectToAction("List", "Produto");
+            var ItensDoCarrinho = vendasExecutor.ResumoDoPedido();
+            return ItensDoCarrinho;
         }
 
         public IActionResult Resumo()

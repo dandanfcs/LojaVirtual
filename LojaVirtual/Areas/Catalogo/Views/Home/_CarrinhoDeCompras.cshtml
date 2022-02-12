@@ -22,7 +22,7 @@
                 <div class="col-8 mb-4">
                     <div scope="row"><span> @produto.Nome </span></div>
                     <div> <span> R$@produto.Preco,00 </span></div>
-                    <div> <span> QTDE:@produto.Quantidade </span></div>
+                    <div> <p> QTDE:<span id="@produto.Id" class="ItemQuantidade">@produto.Quantidade</span>  </p></div>
                 </div>
             </div>
         }
@@ -45,7 +45,7 @@
     }
     .ListaItens{
         height:82vh;
-        max-height: 82vh;.
+        max-height: 82vh;
     }
     .BtnFinalizarPedido {
         display: flex;
