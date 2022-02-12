@@ -1,0 +1,88 @@
+﻿@using LojaVirtual.Areas.Catalogo.Models;
+@model CarrinhoViewModel
+
+<div class="col-2 bg-white cartList shadow-lg">
+    <div class="row justify-content-xl-between align-items-center p-1 border-bottom">
+        <div>
+            <h2>Carrinho</h2>
+        </div>
+        <div>
+            <button class="btn-danger btn-sm rounded-circle" id="btnFechar" onclick="fecharModal()">X</button>
+        </div>
+    </div>
+    <div class="ListaItens">
+        @foreach (var produto in Model.Produtos)
+        {
+            <div class="row align-items-lg-center border-bottom bg-white">
+
+                <div class="col-4" style=" display: flex; flex-direction: column; ">
+                    <img src="https://i.imgur.com/A0A4T87.png" class="" />
+                </div>
+
+                <div class="col-8 mb-4">
+                    <div scope="row"><span> @produto.Nome </span></div>
+                    <div> <span> R$@produto.Preco,00 </span></div>
+                    <div> <span> QTDE:@produto.Quantidade </span></div>
+                </div>
+            </div>
+        }
+    </div>
+    <div>
+        <div class="BtnFinalizarPedido">
+            <span class="valorTotal">Total: R$@Model.ValorTotal,00</span>
+            <a asp-controller="Pedido" asp-action="Resumo">Finalizar Compra</a>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    p {
+        padding-top: 10px;
+        font-family: Arial;
+        font-size: 14px;
+        font-weight: 200;
+    }
+    .ListaItens{
+        height:82vh;
+        max-height: 82vh;.
+    }
+    .BtnFinalizarPedido {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .BtnFinalizarPedido a {
+        background: #222;
+        color: white;
+        border: none;
+        padding: 5px;
+        border-radius: 6px;
+        box-shadow: 2px 2px 2px grey;
+    }
+    .valorTotal {
+        padding-top: 10px;
+        font-family: cursive;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .divFinalizar {
+        display: flex;
+        align-items: end;
+        justify-content: flex-end;
+        margin: 20px 0px;
+    }
+
+    .cartList {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100vh;
+    }
+
+        .cartList img {
+            width: 100px;
+        }
+</style>

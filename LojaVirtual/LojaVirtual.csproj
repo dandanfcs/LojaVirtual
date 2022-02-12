@@ -13,7 +13,14 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Catalogo\Data\" />
+    <Folder Include="Areas\Catalogo\ViewComponents\" />
+    <Folder Include="Areas\Catalogo\Views\Components\Carrinho\" />
   </ItemGroup>
 
 </Project>

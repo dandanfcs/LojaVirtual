@@ -1,0 +1,25 @@
+﻿@model Produto;
+
+<div class="row align-items-lg-center border-bottom bg-white">
+
+    <div class="col-4">
+        <img src="https://i.imgur.com/A0A4T87.png" class="" />
+    </div>
+
+    <div class="col-8 mb-4">
+        <div scope="row">@Model.Nome</div>
+        <div>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+        </div>
+        <div>R$@Model.Preco,00</div>
+
+        <div>
+            <button class="btn btn-dark lg shadow mt-1"
+                    onclick="adicionarNoCarrinho(this)" id="@Model.Id">
+                Adicionar ao carrinho
+            </button>
+        </div>
+    </div>
+</div>

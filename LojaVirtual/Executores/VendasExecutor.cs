@@ -1,6 +1,6 @@
 ﻿using LojaDeMateriais.Models;
 using LojaDeMateriais.Repositories.Interfaces;
-using LojaVirtual.Dtos;
+using LojaVirtual.Areas.Catalogo.Models;
 using LojaVirtual.Models;
 using LojaVirtual.Repositories.Interfaces;
 using System;
@@ -52,7 +52,7 @@ namespace LojaVirtual.Executores
         }
 
 
-        public Resumo ResumoDoPedido()
+        public CarrinhoViewModel ResumoDoPedido()
         {
             Pedido pedidoAberto = pedidoRepository.BuscarPedidoAberto();//vai buscar o primeiro pedido aberto da lista
 
@@ -72,7 +72,7 @@ namespace LojaVirtual.Executores
 
             var valorDaCompra = produtoList.Sum(p => p.ValorTotal());
 
-            Resumo resumo = new Resumo()
+            CarrinhoViewModel resumo = new CarrinhoViewModel()
             {
                 Vendas = vendaRealizada,
                 Produtos = produtoList,

@@ -33,6 +33,7 @@ namespace LojaVirtual
         {
             services.AddControllersWithViews();
             services.AddMvc();
+            services.AddRazorPages();
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationContext>(options =>
             options.UseMySql(Configuration.GetConnectionString("ApplicationContext"),
@@ -44,7 +45,7 @@ namespace LojaVirtual
             services.AddTransient<IPedidoRepository, PedidoRepository>();
             services.AddTransient<IVendasRepository, VendasRepository>();
             services.AddTransient<IVendasExecutor, VendasExecutor>();
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,7 +72,10 @@ namespace LojaVirtual
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Produto}/{action=List}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}");
+
+              endpoints.MapAreaControllerRoute("Catalogo","Catalogo",  "Catalogo/{controller=Home}/{action=Index}");
+
             });
         }
     }

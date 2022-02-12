@@ -1,6 +1,6 @@
 ﻿using LojaDeMateriais.Models;
 using LojaDeMateriais.Repositories.Interfaces;
-using LojaVirtual.Dtos;
+
 using LojaVirtual.Executores;
 using LojaVirtual.Models;
 using LojaVirtual.Repositories.Interfaces;
@@ -12,14 +12,14 @@ using System.Threading.Tasks;
 
 namespace LojaVirtual.Controllers
 {
-    public class VendaController : Controller
+    public class PedidoController : Controller
     {
         private readonly IProdutoRepository produtoRepository;
         private readonly IPedidoRepository pedidoRepository;
         private readonly IVendasRepository vendasRepository;
         private readonly IVendasExecutor vendasExecutor;
 
-        public VendaController(IProdutoRepository produtoRepository, IPedidoRepository vendaRepository,
+        public PedidoController(IProdutoRepository produtoRepository, IPedidoRepository vendaRepository,
             IVendasRepository vendasRepository, IVendasExecutor VendasExecutor)
         {
             this.produtoRepository = produtoRepository;
@@ -44,7 +44,7 @@ namespace LojaVirtual.Controllers
         {
             var resumo = vendasExecutor.ResumoDoPedido();
 
-            ViewBag.Resumo = resumo;
+            ViewBag.ResumoDoPedido = resumo;
             ViewBag.Produtos = resumo.Produtos.ToList();
 
             return View();

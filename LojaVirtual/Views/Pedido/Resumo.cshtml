@@ -1,11 +1,11 @@
-﻿@using LojaVirtual.Dtos
+﻿@using LojaVirtual.Areas.Catalogo.Models;
 @using LojaDeMateriais.Models
-@model LojaVirtual.Dtos.Resumo
+@model CarrinhoViewModel
 @{
     ViewData["Title"] = "Resumo do Pedido";
-    var resumo = ViewData["Resumo"] as Resumo;
+    var ResumoDoPedido = ViewData["ResumoDoPedido"] as CarrinhoViewModel;
     var produtos = ViewData["Produtos"] as List<Produto>;
- 
+
 }
 
 <div>
@@ -24,12 +24,12 @@
                         <div class="col">
 
                             <div class="p-2 ">
-                                <span>@prod.Nome</span> <br/>
+                                <span>@prod.Nome</span> <br />
                                 <span class="texto">Preço: R$@prod.Preco </span><br />
                                 <span class="texto">Quantidade: @prod.Quantidade</span><br />
                                 <span class="texto">Total: @(prod.Quantidade * prod.Preco)</span>
                             </div>
-                            
+
                         </div>
                     </div>
                 }
@@ -46,8 +46,8 @@
                         <div> <span><bold>CEP: </bold>39100-000</span> </div>
                     </div>
 
-                    <div class=" mt-2" ><span>Valor Total: R$@resumo.ValorTotal,00</span></div>
-                    
+                    <div class=" mt-2"><span>Valor Total: R$@(ResumoDoPedido.ValorTotal),00</span></div>
+
                 </div>
             </div>
 

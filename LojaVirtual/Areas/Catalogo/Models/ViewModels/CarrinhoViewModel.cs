@@ -5,15 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LojaVirtual.Dtos
+namespace LojaVirtual.Areas.Catalogo.Models
 {
-    public class Resumo
+    public class CarrinhoViewModel
     {
         public List<Produto> Produtos { get; set; }
 
-        public List<Vendas> Vendas { get; set; } 
+        public List<Vendas> Vendas { get; set; }
 
         public float ValorTotal { get; set; }
-
     }
 }

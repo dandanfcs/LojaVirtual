@@ -1,4 +1,4 @@
-﻿using LojaVirtual.Dtos;
+﻿using LojaVirtual.Areas.Catalogo.Models;
 using LojaVirtual.Models;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ namespace LojaVirtual.Executores
 {
     public interface IVendasExecutor
     {
-        Resumo ResumoDoPedido();
+        CarrinhoViewModel ResumoDoPedido();
         void RealizarVenda(int id);
     }
 }
