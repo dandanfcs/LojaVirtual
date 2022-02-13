@@ -21,12 +21,12 @@ function adicionarNoCarrinho(btn) {
         contentType: 'application/json',
         data: itemIncrementado
     }).done(function (response) {
+       
         let IdDoProduto = response.item1;
         let NovaQuantidade = response.item2;
 
-        var arrayDeQuantidades = document.getElementsByClassName("ItemQuantidade");
-        var tag = arrayDeQuantidades[IdDoProduto];
-        tag.innerHTML = NovaQuantidade;
+        var tag = document.getElementsByName(IdDoProduto);
+        tag[0].innerText = NovaQuantidade;
 
         abrirModal();
     });
