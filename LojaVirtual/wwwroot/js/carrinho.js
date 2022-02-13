@@ -21,7 +21,7 @@ function adicionarNoCarrinho(btn) {
         contentType: 'application/json',
         data: itemIncrementado
     }).done(function (response) {
-        debugger;
+       
         let IdDoProduto = response.item1;
         let NovaQuantidade = response.item2;
 
