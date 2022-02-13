@@ -29,15 +29,11 @@ namespace LojaVirtual.Executores
             Produto produto = produtoRepository.ObterProduto(id);
             Pedido pedidoAberto = pedidoRepository.BuscarPedidoAberto(); //verifica se o pedido esta aberto
 
-            if(pedidoAberto != null)
+            if(!(pedidoAberto is null))
             {
                 //vai ir na venda e pesquisar se o produto já existe na venda
                 //Se existir, aumentar a quantidade
-
-                if (vendasRepository.VerificarSeProdutoExisteNoCarrinho(produto.Id))
-                {
-                    return;
-                }
+                AumentarQuantidadeNoCarrinho(produto.Id);
             }
             //Senão, insere um novo produto
             Vendas venda = new Vendas()
@@ -49,6 +45,17 @@ namespace LojaVirtual.Executores
 
             vendasRepository.InserirProduto(venda);
 
+        }
+
+        public int AumentarQuantidadeNoCarrinho(int id)
+        {
+
+            if (vendasRepository.VerificarSeProdutoExisteNoCarrinho(id))
+            {
+                return vendasRepository.AumentarQuantidade(id); ;
+            }
+
+            throw new Exception("Produto não existe no Carrinho!");
         }
 
 

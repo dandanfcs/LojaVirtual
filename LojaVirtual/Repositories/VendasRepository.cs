@@ -1,6 +1,7 @@
 ﻿using LojaDeMateriais.Context;
 using LojaDeMateriais.Models;
 using LojaDeMateriais.Repositories;
+using LojaVirtual.Areas.Catalogo.Models;
 using LojaVirtual.Models;
 using LojaVirtual.Repositories.Interfaces;
 using System;
@@ -26,15 +27,22 @@ namespace LojaVirtual.Repositories
         public bool VerificarSeProdutoExisteNoCarrinho(int id)
         {
             var produto = dbSet.Where(p => p.IdProduto == id).FirstOrDefault();
-            if (produto == null)
+
+            if (!(produto is null))
             {
-                return false;
+                return true;
             }
 
+            return false;
+        }
+
+        public int AumentarQuantidade(int id)
+        {
+            var produto = dbSet.Where(p => p.IdProduto == id).FirstOrDefault();
             produto.Quantidade++;
             context.SaveChanges();
 
-            return true;
+            return produto.Quantidade;
         }
 
         public void InserirProduto(Vendas vendas)

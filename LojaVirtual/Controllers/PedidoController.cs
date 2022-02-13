@@ -33,7 +33,7 @@ namespace LojaVirtual.Controllers
             return View();
         }
 
-       [HttpPost]
+        [HttpPost]
         public CarrinhoViewModel RealizarVenda([FromBody] int id)
         {
             vendasExecutor.RealizarVenda(id);
@@ -41,6 +41,12 @@ namespace LojaVirtual.Controllers
             return ItensDoCarrinho;
         }
 
+        [HttpPost]
+        public Tuple<int, int> AumentarQuantidade([FromBody] int id)
+        {
+            var Qtde = vendasExecutor.AumentarQuantidadeNoCarrinho(id);
+            return new Tuple<int, int>(id, Qtde);
+        }
         public IActionResult Resumo()
         {
             var resumo = vendasExecutor.ResumoDoPedido();

@@ -11,5 +11,6 @@ namespace LojaVirtual.Executores
     {
         CarrinhoViewModel ResumoDoPedido();
         void RealizarVenda(int id);
+        int AumentarQuantidadeNoCarrinho(int id);
     }
 }

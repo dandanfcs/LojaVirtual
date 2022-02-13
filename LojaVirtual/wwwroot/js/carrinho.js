@@ -13,18 +13,19 @@ function abrirModal() {
 
 function adicionarNoCarrinho(btn) {
 
-    var item = $(btn).attr('id');
+    var itemIncrementado = $(btn).attr('id');
 
     $.ajax({
-        url: '/Pedido/RealizarVenda',
+        url: '/Pedido/AumentarQuantidade',
         type: 'POST',
         contentType: 'application/json',
-        data: item
+        data: itemIncrementado
     }).done(function (response) {
         debugger;
-        console.log("produto incluido");
-        let classQuantidade = document.getElementsByClassName("ItemQuantidade");
-        console.log(response.Produtos);
+        let IdDoProduto = response.item1;
+        let NovaQuantidade = response.item2;
+
+        document.getElementById(IdDoProduto).innerText = NovaQuantidade;
 
         abrirModal();
     });
